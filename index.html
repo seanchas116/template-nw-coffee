@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    if (process.platform === 'darwin') {
+      var gui = require('nw.gui');
+      win = gui.Window.get();
+      var nativeMenuBar = new gui.Menu({ type: "menubar" });
+      nativeMenuBar.createMacBuiltin("My App");
+      win.menu = nativeMenuBar;
+    }
+    global.document = window.document;
+    global.navigator = window.navigator;
+    require('./lib/index');
+  </script>
+</html>
